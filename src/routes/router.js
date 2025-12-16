@@ -9,9 +9,9 @@ import Search from "../pages/Search";
 import SignUp from "../pages/sign-up/SignUp";
 import FindUser from "../pages/find/FindUser";
 import MyPage from "../pages/MyPage";
-import Reserve from "../pages/Reserve";
+import Reserve from "../pages/reserve/Reserve";
 import Payment from "../pages/payment/Payment";
-import Main from "../pages/Main";
+import Main from "../pages/main/Main";
 import SignIn from "../pages/sign-in/SignIn";
 import OauthSuccess from "../pages/sign-in/OauthSuccess";
 import FindEmail from "../pages/find/FindEmail";
@@ -85,8 +85,12 @@ const router = createBrowserRouter([
         element: <MyPage />
       },
       {
-        path: "reserve/:schoolId",
-        element: <Reserve />
+        path: "reserve/place/:schoolId",
+        element: <Reserve reserveType="PLACE" />
+      },
+      {
+        path: "reserve/parking/:schoolId",
+        element: <Reserve reserveType="PARKING" />
       },
       {
         path: "payment/:schoolId",
