@@ -17,9 +17,9 @@ import OauthSuccess from "../pages/sign-in/OauthSuccess";
 import FindEmail from "../pages/find/FindEmail";
 import FindPassword from "../pages/find/FindPassword";
 import Verify from "../pages/sign-up/veirfy/Verify";
-import Terms from "../pages/sign-up/Terms";
-import Info from "../pages/sign-up/Info";
-import Complete from "../pages/sign-up/Complete";
+import Info from "../pages/sign-up/info/Info";
+import Complete from "../pages/sign-up/complete/Complete";
+import Terms from "../pages/sign-up/term/Terms";
 
 
 const router = createBrowserRouter([
