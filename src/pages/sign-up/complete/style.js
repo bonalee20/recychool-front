@@ -25,6 +25,7 @@ S.TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 48px;
 `
 S.TapWrap = styled.div`
   width: 100%;
@@ -76,5 +77,34 @@ S.ModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 `
+S.ButtonWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+`
+S.ButtonLogin = styled.div`
+  width: 320px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.PALETTE.primary.green.main};
+  color: #ffffff;
+  ${h6Bold}
+  border-radius: 4px;
+`
+S.ButtonMain = styled.div`
+  width: 320px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.PALETTE.primary.green.light};
+  color: #666;
+  ${h6Bold}
+  border-radius: 4px;
+`
+
 
 export default S;

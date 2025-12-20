@@ -25,6 +25,7 @@ S.TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 48px;
 `
 S.TapWrap = styled.div`
   width: 100%;

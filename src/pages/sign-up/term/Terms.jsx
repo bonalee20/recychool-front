@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import S from './style';
 import Component from './component/Component';
 
 const Terms = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const verificationData = location.state?.verificationData || null;
+  
   const [agreementStates, setAgreementStates] = useState({
     agreementA: false,
     agreementB: false,
@@ -25,8 +28,12 @@ const Terms = () => {
       return;
     }
 
-    // 필수 약관이 모두 동의되었으면 다음 단계로 이동
-    navigate("/sign-up/info");
+    // 필수 약관이 모두 동의되었으면 다음 단계로 이동 (본인확인 데이터 전달)
+    navigate("/sign-up/info", { 
+      state: { 
+        verificationData: verificationData 
+      } 
+    });
   };
 
   return (

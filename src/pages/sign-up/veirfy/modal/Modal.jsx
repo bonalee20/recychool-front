@@ -179,8 +179,14 @@ const Modal = ({ onClose, onComplete }) => {
 
   // 완료하기 버튼 클릭
   const handleComplete = () => {
+    // 유효성 검사
+    if (!validateForm()) {
+      return;
+    }
+
+    // 휴대폰 인증 완료 여부 확인
     if (!isVerified) {
-      alert("인증을 완료해주세요.");
+      alert("휴대폰 인증을 완료해주세요.");
       return;
     }
 
@@ -188,11 +194,10 @@ const Modal = ({ onClose, onComplete }) => {
       userName,
       userPhone,
       userBirthday,
-      verified: true,
+      verified: isVerified,
       timestamp: new Date().toISOString(),
     };
     onComplete(verificationResult);
-    navigate("/sign-up/terms");
     onClose();
   };
 
@@ -271,7 +276,6 @@ const Modal = ({ onClose, onComplete }) => {
         </S.CancelButton>
         <S.CompleteButton 
           onClick={handleComplete}
-          disabled={!isVerified}
         >
           완료하기
         </S.CompleteButton>

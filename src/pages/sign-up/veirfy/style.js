@@ -24,12 +24,14 @@ S.TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 48px;
 `
 S.TapWrap = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin: 36px 0;
   :hover{
     cursor: pointer;
