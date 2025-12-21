@@ -8,7 +8,6 @@ import NotFound from "../pages/notfound/NotFound";
 import Search from "../pages/Search";
 import SignUp from "../pages/sign-up/SignUp";
 import FindUser from "../pages/find/FindUser";
-import MyPage from "../pages/MyPage";
 import Reserve from "../pages/reserve/Reserve";
 import Payment from "../pages/payment/Payment";
 import Main from "../pages/main/Main";
@@ -20,6 +19,7 @@ import Verify from "../pages/sign-up/veirfy/Verify";
 import Terms from "../pages/sign-up/Terms";
 import Info from "../pages/sign-up/Info";
 import Complete from "../pages/sign-up/Complete";
+import MyPage from "../pages/mypage/MyPage";
 
 
 const router = createBrowserRouter([
