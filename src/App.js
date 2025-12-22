@@ -80,9 +80,11 @@ function App() {
         <RouterProvider router={router} />
       </QueryClientProvider>
       {/* 개발 환경에서 Redux 상태 확인용 */}
-      {process.env.NODE_ENV === 'development' && <ReduxDebugger />}
+      {/* {process.env.NODE_ENV === 'development' && <ReduxDebugger />} */}
     </>
   );
 }
+
+
 
 export default App;

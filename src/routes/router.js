@@ -8,18 +8,22 @@ import NotFound from "../pages/notfound/NotFound";
 import Search from "../pages/Search";
 import SignUp from "../pages/sign-up/SignUp";
 import FindUser from "../pages/find/FindUser";
-import MyPage from "../pages/MyPage";
 import Reserve from "../pages/reserve/Reserve";
 import Payment from "../pages/payment/Payment";
 import Main from "../pages/main/Main";
 import SignIn from "../pages/sign-in/SignIn";
 import OauthSuccess from "../pages/sign-in/OauthSuccess";
-import FindEmail from "../pages/find/FindEmail";
-import FindPassword from "../pages/find/FindPassword";
+import FindEmail from "../pages/find/find-email/FindEmail";
+import FindPassword from "../pages/find/find-password/FindPassword";
 import Verify from "../pages/sign-up/veirfy/Verify";
-import Terms from "../pages/sign-up/Terms";
-import Info from "../pages/sign-up/Info";
-import Complete from "../pages/sign-up/Complete";
+import Info from "../pages/sign-up/info/Info";
+import Complete from "../pages/sign-up/complete/Complete";
+import Terms from "../pages/sign-up/term/Terms";
+import FindEmailComplete from "../pages/find/find-email/complete/FindEmailComplete";
+import PasswordChange from "../pages/find/find-password/info/PasswordChange";
+import FindPasswordComplete from "../pages/find/find-password/complete/FindPasswordComplete";
+import Movie from "../pages/movie/Movie";
+import MyPage from "../pages/mypage/MyPage";
 
 
 const router = createBrowserRouter([
@@ -72,17 +76,37 @@ const router = createBrowserRouter([
         children:[
           {
             path: "email",
-            element: <FindEmail />
+            element: <FindEmail />,
+            children: [
+              {
+                path: "complete",
+                element: <FindEmailComplete />
+              }
+          ]
           },
           {
             path: "password",
-            element: <FindPassword />
+            element: <FindPassword />,
+            children: [
+              {
+                path: "info",
+                element: <PasswordChange />
+              },
+              {
+                path: "complete",
+                element: <FindPasswordComplete />
+              }
+            ]
           }
         ]
       },
       {
         path: "my-page",
         element: <MyPage />
+      },
+      {
+        path: "movie",
+        element: <Movie />
       },
       {
         path: "reserve/place/:schoolId",

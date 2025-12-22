@@ -1,119 +1,99 @@
-import React, { useState } from "react";
+import React from "react";
 import S from "./style";
 
-const PaymentForm = () => {
-  // 피그마 기준: 토스페이 선택 상태
-  const [payMethod, setPayMethod] = useState("toss"); // card | toss | kakao
-
+const PaymentForm = ({ user, reserve, payType, setPayType }) => {
   return (
     <S.LeftWrap>
-      {/* =============================
-       * 이용자 정보
-       * ============================= */}
-      <S.Section>
-        <S.SectionHeader>
-          <S.SectionTitle>이용자 정보</S.SectionTitle>
-          <S.SectionLine />
-        </S.SectionHeader>
+      {/* 이용자 정보 */}
+      <S.Block>
+        <S.BlockTitle>이용자 정보</S.BlockTitle>
+        <S.BlockLine />
 
-        <S.InfoList>
-          <S.InfoRow>
-            <S.InfoLabel>이름</S.InfoLabel>
-            <S.InfoValue>홍길동</S.InfoValue>
-          </S.InfoRow>
+        <S.InfoGrid>
+          <S.InfoLabel>이름</S.InfoLabel>
+          <S.InfoValue>{user.name}</S.InfoValue>
+          <S.InfoLabel>이메일</S.InfoLabel>
+          <S.InfoValue>{user.email}</S.InfoValue>
 
-          <S.InfoRow>
-            <S.InfoLabel>이메일</S.InfoLabel>
-            <S.InfoValue>hgd12345@gmail.com</S.InfoValue>
-          </S.InfoRow>
+          <S.InfoLabel>휴대폰</S.InfoLabel>
+          <S.InfoValue>{user.phone}</S.InfoValue>
+        </S.InfoGrid>
+      </S.Block>
 
-          <S.InfoRow>
-            <S.InfoLabel>휴대폰</S.InfoLabel>
-            <S.InfoValue>010-2222-4444</S.InfoValue>
-          </S.InfoRow>
-        </S.InfoList>
-      </S.Section>
-
-      {/* =============================
-       * 결제 방법 선택
-       * ============================= */}
-      <S.Section>
-        <S.SectionHeader>
-          <S.SectionTitle>결제 방법 선택</S.SectionTitle>
-          <S.SectionLine />
-        </S.SectionHeader>
+      {/* 결제 방법 선택 */}
+      <S.Block>
+        <S.BlockTitle>결제 방법 선택</S.BlockTitle>
+        <S.BlockLine />
 
         <S.PayList>
-          <S.PayRow>
+          <S.PayRow onClick={() => setPayType("GENERAL")}>
             <S.PayLeft>
-              <S.PayLogo>card</S.PayLogo>
+              <S.PayIcon aria-hidden>
+                <S.PayIconImg
+                  src="/assets/images/payment/general_Icon.png"
+                  alt="일반결제"
+                />
+              </S.PayIcon>
               <S.PayText>일반결제</S.PayText>
             </S.PayLeft>
 
-            <S.Radio
-              type="radio"
-              name="payMethod"
-              checked={payMethod === "card"}
-              onChange={() => setPayMethod("card")}
-            />
+            <S.RadioOuter $checked={payType === "GENERAL"}>
+              <S.RadioInner $checked={payType === "GENERAL"} />
+            </S.RadioOuter>
           </S.PayRow>
 
-          <S.PayRow>
+          <S.PayRow onClick={() => setPayType("TOSS")}>
             <S.PayLeft>
-              <S.PayLogo>toss</S.PayLogo>
+              <S.PayIcon aria-hidden>
+                <S.PayIconImg
+                  src="/assets/images/payment/tossPay_Icon.png"
+                  alt="토스페이"
+                  data-pay="toss"
+                />
+              </S.PayIcon>
               <S.PayText>토스페이</S.PayText>
             </S.PayLeft>
 
-            <S.Radio
-              type="radio"
-              name="payMethod"
-              checked={payMethod === "toss"}
-              onChange={() => setPayMethod("toss")}
-            />
+            <S.RadioOuter $checked={payType === "TOSS"}>
+              <S.RadioInner $checked={payType === "TOSS"} />
+            </S.RadioOuter>
           </S.PayRow>
 
-          <S.PayRow>
+          <S.PayRow onClick={() => setPayType("KAKAO")}>
             <S.PayLeft>
-              <S.PayLogo>kpay</S.PayLogo>
+              <S.PayIcon aria-hidden>
+                <S.PayIconImg
+                  src="/assets/images/payment/kakaoPay_Icon.png"
+                  alt="카카오페이"
+                  data-pay="kakao"
+                />
+              </S.PayIcon>
               <S.PayText>카카오페이</S.PayText>
             </S.PayLeft>
 
-            <S.Radio
-              type="radio"
-              name="payMethod"
-              checked={payMethod === "kakao"}
-              onChange={() => setPayMethod("kakao")}
-            />
+            <S.RadioOuter $checked={payType === "KAKAO"}>
+              <S.RadioInner $checked={payType === "KAKAO"} />
+            </S.RadioOuter>
           </S.PayRow>
         </S.PayList>
-      </S.Section>
+      </S.Block>
 
-      {/* =============================
-       * 환불 규정
-       * ============================= */}
-      <S.Section>
-        <S.SectionHeader>
-          <S.SectionTitle>환불 규정</S.SectionTitle>
-          <S.SectionLine />
-        </S.SectionHeader>
+      {/* 환불 규정 */}
+      <S.Block>
+        <S.BlockTitle>환불 규정</S.BlockTitle>
+        <S.BlockLine />
 
-        <S.PolicyList>
-          <S.PolicyRow>
-            <S.PolicyKey>100% 환불</S.PolicyKey>
-            <S.PolicyValue>이용 2일전 취소시</S.PolicyValue>
-          </S.PolicyRow>
+        <S.RefundGrid>
+          <S.RefundLeft>100% 환불</S.RefundLeft>
+          <S.RefundRight>이용 2일전 취소시</S.RefundRight>
 
-          <S.PolicyRow>
-            <S.PolicyKey>50% 환불</S.PolicyKey>
-            <S.PolicyValue>이용 1일전 취소시</S.PolicyValue>
-          </S.PolicyRow>
+          <S.RefundLeft>50% 환불</S.RefundLeft>
+          <S.RefundRight>이용 1일전 취소시</S.RefundRight>
 
-          <S.PolicyRow>
-            <S.PolicyKey>취소 불가</S.PolicyKey>
-            <S.PolicyValue>이용 당일</S.PolicyValue>
-          </S.PolicyRow>
-        </S.PolicyList>
-      </S.Section>
+          <S.RefundLeft>취소 불가</S.RefundLeft>
+          <S.RefundRight>이용 당일</S.RefundRight>
+        </S.RefundGrid>
+      </S.Block>
     </S.LeftWrap>
   );
 };

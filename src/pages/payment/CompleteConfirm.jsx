@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Terms = () => {
+
+const CompleteConfirm = () => {
   return (
     <div>
       
@@ -8,4 +9,4 @@ const Terms = () => {
   );
 };
 
-export default Terms;
+export default CompleteConfirm;
