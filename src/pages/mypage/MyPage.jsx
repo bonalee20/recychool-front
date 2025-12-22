@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from "react";
 import S from "./style";
+import EditableRow from "./EditableRow";
+import Password from "./Password";
 
 const MyPage = () => {
+  const [phone, setPhone] = useState("");
+  const [editingField, setEditingField] = useState(null);
+
+  // 비밀번호 전용 상태
+  const [currentPw, setCurrentPw] = useState("");
+  const [newPw, setNewPw] = useState("");
+  const [confirmPw, setConfirmPw] = useState("");
+
   return (
     <S.All>
       <S.Head>계정관리</S.Head>
@@ -25,21 +35,28 @@ const MyPage = () => {
             <S.ReadOnlyBox>gk1234@gmail.com</S.ReadOnlyBox>
           </S.Row>
 
-          <S.Row>
-            <S.RowHeader>
-              <S.Label>전화번호</S.Label>
-              <S.EditBtn>수정하기</S.EditBtn>
-            </S.RowHeader>
-            <S.UpdateBox>휴대폰 번호 ‘-’ 제외하고 입력</S.UpdateBox> 
-          </S.Row>
+          {/* 전화번호 */}
+          <EditableRow
+            fieldKey="phone"
+            label="전화번호"
+            placeholder="휴대폰 번호 ‘-’ 제외하고 입력"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            editingField={editingField}
+            setEditingField={setEditingField}
+          />
 
-          <S.Row>
-            <S.RowHeader>
-              <S.Label>비밀번호</S.Label>
-              <S.EditBtn>수정하기</S.EditBtn>
-            </S.RowHeader>
-            <S.UpdateBox>************</S.UpdateBox>
-          </S.Row>
+          {/* 비밀번호 */}
+          <Password
+            editingField={editingField}
+            setEditingField={setEditingField}
+            currentPw={currentPw}
+            newPw={newPw}
+            confirmPw={confirmPw}
+            setCurrentPw={setCurrentPw}
+            setNewPw={setNewPw}
+            setConfirmPw={setConfirmPw}
+          />
 
           <S.SubmitBtn>완료하기</S.SubmitBtn>
         </S.Content>
