@@ -13,7 +13,7 @@ const Payment = () => {
   const reserve = { id: 3, reserveType: "PLACE", startDate: "2026-01-17" };
 
   const totalPrice = useMemo(() => {
-    return reserve.reserveType === "PARKING" ? 300 : 500;
+    return reserve.reserveType === "PARKING" ? 30000 : 50000;
   }, [reserve.reserveType]);
 
   const getPortOnePayType = () => {
