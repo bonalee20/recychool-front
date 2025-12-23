@@ -126,6 +126,10 @@ const router = createBrowserRouter([
         path: "complete/:reserveId",
         element: <CompleteConfirm />
       },
+      {
+        path: "movie/reservation",
+        element: <MovieReservation />
+      }
     ],
   },
   {
