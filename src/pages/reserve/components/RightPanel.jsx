@@ -57,6 +57,12 @@ const RightPanel = ({ data, type, selectedDate }) => {
         }
       );
 
+      if (res.status === 401) {
+        alert("로그인이 필요합니다.");
+        navigate("/sign-in");
+        return;
+      }
+
       const text = await res.text();
       let result = {};
 
